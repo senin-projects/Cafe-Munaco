@@ -1,0 +1,1 @@
+- [Generated client DOM types](api-client-dom-types.md) — Keep DOM.Iterable in api-client-react TypeScript libs; Orval emits Headers.entries calls.

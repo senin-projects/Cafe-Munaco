@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Cafe Munaco Operations"
+description = "A staff operations platform for Cafe Munaco that coordinates orders, kitchen status, reservations and events, and inventory across role-based staff accounts."
+version = "1.0.0"
+id = "artifacts/cafe-munaco"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 23161
+
+[services.development]
+run = "pnpm --filter @workspace/cafe-munaco run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/cafe-munaco", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/cafe-munaco/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "23161"
+BASE_PATH = "/"
